@@ -1,0 +1,24 @@
+.button-0,.button-1{
+    padding: 10px 50px;
+    margin-top: 10px;
+    border-radius: 20px;
+    color:rgba(0, 0, 0, 0.73);
+
+}
+
+.button-0:hover{
+    background-color: black;
+    color: white;
+    transition: all 700ms ease;
+
+}
+ .button-1:hover{
+    background-color: black;
+    color: white;
+    transition: all 700ms ease;
+
+
+}
+.truth-question{
+    font-size: 14px;
+}
