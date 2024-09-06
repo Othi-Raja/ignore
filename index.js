@@ -99,7 +99,7 @@ async function Sendtruth() {
         const response = await fetch('https://formsubmit.co/ajax/othiraja64@gmail.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: truthvalue }),
+            body: JSON.stringify({ title: 'truth', name: truthvalue }),
         });
         // Handle the response
         if (response.ok) {
@@ -130,7 +130,7 @@ async function SendDare() {
         const response = await fetch('https://formsubmit.co/ajax/d4d0caaa62aa99b907b8ad4743be8b48', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: darevalue }),
+            body: JSON.stringify({ title: 'dare',name: darevalue }),
         });
         // Handle the response
         if (response.ok) {
