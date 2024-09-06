@@ -1,4 +1,26 @@
- let darevalue  
+let darevalue
+let truthvalue
+let accept_truth_bth = document.querySelector('.accept-truth')
+let reject_truth_bth = document.querySelector('.reject-truth')
+let accept_dare_bth = document.querySelector('.accept-dare')
+let reject_dare_bth = document.querySelector('.reject-dare')
+let hide_Truth_dare = document.querySelector('.hide-Truth-dare')
+let message_recieved_noti = document.querySelector('.message_recieved_noti')
+let hideT_accept_reject_btn = document.querySelector('#hideT_accept_reject_btn')
+let hideD_accept_reject_btn = document.querySelector('#hideD_accept_reject_btn')
+message_recieved_noti.style.display = 'none'
+accept_truth_bth.style.display = 'none'
+reject_truth_bth.style.display = 'none'
+accept_dare_bth.style.display = 'none'
+reject_dare_bth.style.display = 'none'
+function toggleLottie() {
+    const player = document.getElementById('myLottiePlayer');
+    if (player.isPlaying) {
+        player.pause();
+    } else {
+        player.play();
+    }
+}
 function getRandomTruthQuestion() {
     const questions = [
         "What's the sweetest thing someone has ever done for you?",
@@ -12,7 +34,7 @@ function getRandomTruthQuestion() {
     // Select a random question
     const randomIndex = Math.floor(Math.random() * questions.length);
     const selectedQuestion = questions[randomIndex];
-    darevalue= selectedQuestion
+    truthvalue = selectedQuestion
     // Create a list item element
     const li = document.createElement('li');
     li.textContent = selectedQuestion;
@@ -24,6 +46,12 @@ function getRandomTruthQuestion() {
 document.querySelector('.button-0').addEventListener('click', () => {
     // Call the function to display a random question when the page loads
     getRandomTruthQuestion();
+    document.getElementById('DareQuestionsList').style.display = 'none'
+    document.getElementById('truthQuestionsList').style.display = 'block'
+    accept_truth_bth.style.display = 'block'
+    reject_truth_bth.style.display = 'block'
+    accept_dare_bth.style.display = 'none'
+    reject_dare_bth.style.display = 'none'
 })
 function getRandomDareQuestion() {
     const questions = [
@@ -36,6 +64,7 @@ function getRandomDareQuestion() {
     // Select a random question
     const randomIndex = Math.floor(Math.random() * questions.length);
     const selectedQuestion = questions[randomIndex];
+    darevalue = selectedQuestion
     // Create a list item element
     const li = document.createElement('li');
     li.textContent = selectedQuestion;
@@ -44,19 +73,34 @@ function getRandomDareQuestion() {
     const list = document.getElementById('DareQuestionsList');
     list.innerHTML = ''; // Clear any previous questions
     list.appendChild(li);
-   // Send email with the dare question
-
+    // Send email with the dare question
 }
-async function SendDare (){
+document.querySelector('.reject-dare').addEventListener('click', () => {
+    window.location.reload()
+})
+document.querySelector('.btn-close').addEventListener('click', () => {
+    window.location.reload()
+})
+document.querySelector('.reject-truth').addEventListener('click', () => {
+    window.location.reload()
+})
+async function Sendtruth() {
+    hide_Truth_dare.style.display = 'none'
+    message_recieved_noti.style.display = 'block'
+    document.querySelector('.reject-truth').style.display = 'none'
+    document.querySelector('.accept-truth').style.display = 'none'
+    
+    setTimeout(() => {
+    toggleLottie();
+    }, 1000);
     
     try {
         // Send email
         const response = await fetch('https://formsubmit.co/ajax/othiraja64@gmail.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: darevalue }),
+            body: JSON.stringify({ name: truthvalue }),
         });
-
         // Handle the response
         if (response.ok) {
             const responseBody = await response.text();
@@ -69,9 +113,47 @@ async function SendDare (){
         console.error('Error occurred:', error);
     }
 }
+document.querySelector('.accept-truth').addEventListener('click', () => {
+    Sendtruth()
+})
+async function SendDare() {
+    hide_Truth_dare.style.display = 'none'
+    message_recieved_noti.style.display = 'block'
+    document.querySelector('.accept-dare').style.display = 'none'
+    document.querySelector('.reject-dare').style.display = 'none'
+    setTimeout(() => {
+        toggleLottie();
+    }, 1000);
+    
+    try {
+        // Send email
+        const response = await fetch('https://formsubmit.co/ajax/d4d0caaa62aa99b907b8ad4743be8b48', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: darevalue }),
+        });
+        // Handle the response
+        if (response.ok) {
+            const responseBody = await response.text();
+            console.log('Email sent successfully:', responseBody);
+        } else {
+            const errorResponseBody = await response.text();
+            console.error('Failed to send email. Response Body:', errorResponseBody);
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+    }
+}
+document.querySelector('.accept-dare').addEventListener('click', () => {
+    SendDare()
+})
 document.querySelector('.button-1').addEventListener('click', async () => {
     // Call the function to display a random question when the page loads
-    getRandomTruthQuestion();
-
-
+    getRandomDareQuestion();
+    document.getElementById('truthQuestionsList').style.display = 'none'
+    document.getElementById('DareQuestionsList').style.display = 'block'
+    accept_truth_bth.style.display = 'none'
+    reject_truth_bth.style.display = 'none'
+    accept_dare_bth.style.display = 'block'
+    reject_dare_bth.style.display = 'block'
 });
