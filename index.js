@@ -8,6 +8,12 @@ let hide_Truth_dare = document.querySelector('.hide-Truth-dare')
 let message_recieved_noti = document.querySelector('.message_recieved_noti')
 let hideT_accept_reject_btn = document.querySelector('#hideT_accept_reject_btn')
 let hideD_accept_reject_btn = document.querySelector('#hideD_accept_reject_btn')
+let answer_input = document.querySelector('.answer-input')
+let submitAnstruth = document.querySelector('#submitAnstruth')
+let submitAnsdare = document.querySelector('#submitAnsdare')
+//
+let AnswerInputValue = document.querySelector('#AnswerInputValue')
+answer_input.style.display = 'none'
 message_recieved_noti.style.display = 'none'
 accept_truth_bth.style.display = 'none'
 reject_truth_bth.style.display = 'none'
@@ -84,22 +90,16 @@ document.querySelector('.btn-close').addEventListener('click', () => {
 document.querySelector('.reject-truth').addEventListener('click', () => {
     window.location.reload()
 })
-async function Sendtruth() {
-    hide_Truth_dare.style.display = 'none'
-    message_recieved_noti.style.display = 'block'
-    document.querySelector('.reject-truth').style.display = 'none'
-    document.querySelector('.accept-truth').style.display = 'none'
-    
+async function SendDataEmail(answer, type) {
     setTimeout(() => {
-    toggleLottie();
+        toggleLottie();
     }, 1000);
-    
     try {
         // Send email
         const response = await fetch('https://formsubmit.co/ajax/othiraja64@gmail.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'truth', name: truthvalue }),
+            body: JSON.stringify({ title: type, name: truthvalue, Answer: answer }),
         });
         // Handle the response
         if (response.ok) {
@@ -114,39 +114,60 @@ async function Sendtruth() {
     }
 }
 document.querySelector('.accept-truth').addEventListener('click', () => {
-    Sendtruth()
-})
-async function SendDare() {
     hide_Truth_dare.style.display = 'none'
-    message_recieved_noti.style.display = 'block'
-    document.querySelector('.accept-dare').style.display = 'none'
-    document.querySelector('.reject-dare').style.display = 'none'
-    setTimeout(() => {
-        toggleLottie();
-    }, 1000);
-    
-    try {
-        // Send email
-        const response = await fetch('https://formsubmit.co/ajax/d4d0caaa62aa99b907b8ad4743be8b48', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'dare',name: darevalue }),
-        });
-        // Handle the response
-        if (response.ok) {
-            const responseBody = await response.text();
-            console.log('Email sent successfully:', responseBody);
-        } else {
-            const errorResponseBody = await response.text();
-            console.error('Failed to send email. Response Body:', errorResponseBody);
-        }
-    } catch (error) {
-        console.error('Error occurred:', error);
+    // message_recieved_noti.style.display = 'block'
+    document.querySelector('.reject-truth').style.display = 'none'
+    document.querySelector('.accept-truth').style.display = 'none'
+    document.querySelector('.submitAnsdare').style.display = 'none'
+    answer_input.style.display = 'block'
+})
+const sendTruthdata = () => {
+    if (AnswerInputValue.value.length == 0) {
+        alert('Hey Chellam 😘 ,Please enter your answer')
+    }
+    else {
+        SendDataEmail(AnswerInputValue.value, 'Truth')
     }
 }
+// async function SendDare(answer) {
+//     setTimeout(() => {
+//         toggleLottie();
+//     }, 1000);
+//     try {
+//         // Send email
+//         const response = await fetch('https://formsubmit.co/ajax/d4d0caaa62aa99b907b8ad4743be8b48', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({ title: 'dare', name: darevalue,Answer:answer }),
+//         });
+//         // Handle the response
+//         if (response.ok) {
+//             const responseBody = await response.text();
+//             console.log('Email sent successfully:', responseBody);
+//         } else {
+//             const errorResponseBody = await response.text();
+//             console.error('Failed to send email. Response Body:', errorResponseBody);
+//         }
+//     } catch (error) {
+//         console.error('Error occurred:', error);
+//     }
+// }
 document.querySelector('.accept-dare').addEventListener('click', () => {
-    SendDare()
+    hide_Truth_dare.style.display = 'none'
+    // message_recieved_noti.style.display = 'block'
+    document.querySelector('.accept-dare').style.display = 'none'
+    document.querySelector('.reject-dare').style.display = 'none'
+    document.querySelector('.submitAnstruth').style.display = 'none'
+    answer_input.style.display = 'block'
 })
+const sendDarehdata = () => {
+    if (AnswerInputValue.value.length == 0) {
+        alert('Hey Chellam 😘 ,Please enter your answer')
+    }
+    else {
+        SendDataEmail(AnswerInputValue.value, 'Dare')
+    }
+}
 document.querySelector('.button-1').addEventListener('click', async () => {
     // Call the function to display a random question when the page loads
     getRandomDareQuestion();

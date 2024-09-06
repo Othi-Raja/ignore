@@ -110,7 +110,7 @@
             <!-- Questions will be inserted here -->
           </ul>
           <div class="d-flex justify-content-center  " id="hideT_accept_reject_btn mb-3">
-            <button onclick="Sendtruth()" class="accept-truth outline-none border-0">✔️ Accept</button>
+            <button   class="accept-truth outline-none border-0">✔️ Accept</button>
             <button type="button" data-bs-dismiss="modal" class="reject-truth outline-none border-0">❌ Deny</button>
           </div>
         </div>
@@ -126,8 +126,19 @@
         <div class="message_recieved_noti">
           <dotlottie-player id="myLottiePlayer"
             src="https://lottie.host/d853c2cc-4775-4385-a6de-b5201c9232b9/6z9mAoUKjt.json" background="transparent"
-            speed="1" style="width: 300px; height: 300px;" autoplay></dotlottie-player>
+            speed="1" style="width: 300px; height: 300px;"></dotlottie-player>
         </div>
+        <div class="answer-input form-group text-center mx-2">
+          <input type="text" class="input-group outline-none border-0  p-2 " id="AnswerInputValue" placeholder="Type your answer">
+          <br>
+          <button class="answer_btn outline-none border-0 mb-5 submitAnstruth" onclick="sendTruthdata()" id="submitAnstruth ">
+              <span>Send</span> 
+          </button>
+          <button class="answer_btn outline-none border-0 mb-5 submitAnsdare" onclick="sendDarehdata()" id="submitAnsdare ">
+            <span>Send</span> 
+        </button>
+      </div>
+      
       </div>
     </div>
   </div>
