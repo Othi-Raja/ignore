@@ -43,7 +43,9 @@
     padding: 10px 40px;
     background-color: transparent;
 }
-
+.sucess_text{
+    font-size: small;
+}
 /* loader css properties */
 
 

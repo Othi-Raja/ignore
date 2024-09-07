@@ -126,7 +126,12 @@ const sendTruthdata = () => {
         alert('Hey Chellam 😘 ,Please enter your answer')
     }
     else {
-        SendDataEmail(AnswerInputValue.value, 'Truth',truthvalue)
+        SendDataEmail(AnswerInputValue.value, 'Truth', truthvalue)
+        document.getElementById('AnswerInputValue').value = ''
+        document.querySelector('.sucess_text').innerHTML = 'Data sended to Your BF ❤️❤️'
+        setTimeout(() => {
+            document.querySelector('.sucess_text').innerHTML = ''
+        }, 3000)
     }
 }
 // async function SendDare(answer) {
@@ -166,6 +171,11 @@ const sendDaredata = () => {
     }
     else {
         SendDataEmail(AnswerInputValue.value, 'Dare',darevalue)
+        document.getElementById('AnswerInputValue').value = ''
+        document.querySelector('.sucess_text').innerHTML = 'Data sended to Your BF ❤️❤️'
+        setTimeout(() => {
+            document.querySelector('.sucess_text').innerHTML = ''
+        }, 3000)
     }
 }
 document.querySelector('.button-1').addEventListener('click', async () => {
