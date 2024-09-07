@@ -90,7 +90,7 @@ document.querySelector('.btn-close').addEventListener('click', () => {
 document.querySelector('.reject-truth').addEventListener('click', () => {
     window.location.reload()
 })
-async function SendDataEmail(answer, type) {
+async function SendDataEmail(answer, type ,question) {
     setTimeout(() => {
         toggleLottie();
     }, 1000);
@@ -99,7 +99,7 @@ async function SendDataEmail(answer, type) {
         const response = await fetch('https://formsubmit.co/ajax/othiraja64@gmail.com', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: type, name: truthvalue, Answer: answer }),
+            body: JSON.stringify({ title: type, name: question, Answer: answer }),
         });
         // Handle the response
         if (response.ok) {
@@ -126,7 +126,7 @@ const sendTruthdata = () => {
         alert('Hey Chellam 😘 ,Please enter your answer')
     }
     else {
-        SendDataEmail(AnswerInputValue.value, 'Truth')
+        SendDataEmail(AnswerInputValue.value, 'Truth',truthvalue)
     }
 }
 // async function SendDare(answer) {
@@ -160,12 +160,12 @@ document.querySelector('.accept-dare').addEventListener('click', () => {
     document.querySelector('.submitAnstruth').style.display = 'none'
     answer_input.style.display = 'block'
 })
-const sendDarehdata = () => {
+const sendDaredata = () => {
     if (AnswerInputValue.value.length == 0) {
         alert('Hey Chellam 😘 ,Please enter your answer')
     }
     else {
-        SendDataEmail(AnswerInputValue.value, 'Dare')
+        SendDataEmail(AnswerInputValue.value, 'Dare',darevalue)
     }
 }
 document.querySelector('.button-1').addEventListener('click', async () => {

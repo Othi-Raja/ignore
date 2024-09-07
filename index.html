@@ -85,6 +85,10 @@
   </style>
 </head>
 <body>
+  <div id="loader">
+    <dotlottie-player src="Animation - 1725692721912.json" background="white" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+
+</div>
   <div class="container">
     <div class="base">
       <h4>Hi CUTIEE</h4>
@@ -134,7 +138,7 @@
           <button class="answer_btn outline-none border-0 mb-5 submitAnstruth" onclick="sendTruthdata()" id="submitAnstruth ">
               <span>Send</span> 
           </button>
-          <button class="answer_btn outline-none border-0 mb-5 submitAnsdare" onclick="sendDarehdata()" id="submitAnsdare ">
+          <button class="answer_btn outline-none border-0 mb-5 submitAnsdare" onclick="sendDaredata()" id="submitAnsdare ">
             <span>Send</span> 
         </button>
       </div>
@@ -145,6 +149,20 @@
   <script src="index.js"></script>
   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Start the loader for 3 seconds
+    setTimeout(function() {
+        // Hide the loader
+        document.getElementById('loader').style.display = 'none';
+
+        // Show the content
+        const content = document.getElementById('content');
+        content.style.display = 'block';
+        content.style.opacity = '1';
+    }, 8000); // 8 seconds delay
+});
+
     let canvas = document.getElementById("scratch");
     let context = canvas.getContext("2d");
     let scratchArea = 0; // To track scratched area
