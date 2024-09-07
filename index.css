@@ -77,5 +77,5 @@ backdrop-filter: blur(8.7px);
 /* Hide Content when Loader is Visible */
 #content {
     opacity: 0;
-    transition: opacity 8s ease;
+    transition: opacity 8s linear; 
 }

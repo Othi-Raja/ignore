@@ -14,7 +14,8 @@
     }
     body {
       height: 100vh;
-      background: linear-gradient(135deg, #57acd1, #0758c2);
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     }
     .container {
       width: 21em;
@@ -168,8 +169,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let scratchArea = 0; // To track scratched area
     const init = () => {
       let gradientColor = context.createLinearGradient(0, 0, 135, 135);
-      gradientColor.addColorStop(0, "#57acd1");
-      gradientColor.addColorStop(1, "#6414e9");
+      gradientColor.addColorStop(0, "#5961F9");
+      gradientColor.addColorStop(1, "#5961F9");
       context.fillStyle = gradientColor;
       context.fillRect(0, 0, 300, 300);
     };
